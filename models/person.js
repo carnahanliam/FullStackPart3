@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const uniqueValidator = require("mongoose-unique-validator");
 
 // if (process.argv.length < 3) {
 //   console.log(
@@ -46,6 +47,8 @@ personSchema.set("toJSON", {
     delete returnedObject.__v;
   },
 });
+
+personSchema.plugin(uniqueValidator);
 
 // const Person = mongoose.model("Person", personSchema);
 
