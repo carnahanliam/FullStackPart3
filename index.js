@@ -57,10 +57,6 @@ app.get("/api/persons", (request, response) => {
   });
 });
 
-const newID = () => {
-  return Math.floor(Math.random() * 1000);
-};
-
 app.post("/api/persons", (request, response, next) => {
   const body = request.body;
 
@@ -105,8 +101,6 @@ app.put("/api/persons/:id", (request, response, next) => {
     name: body.name,
     number: body.number,
   };
-
-  // const existingID = Person.find({ name: body.name, number: body.number }).id;
 
   Person.findByIdAndUpdate(request.params.id, person, { new: true })
     .then((updatedPerson) => {
