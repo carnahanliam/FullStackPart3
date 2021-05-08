@@ -15,7 +15,11 @@ const errorHandler = (error, request, response, next) => {
   if (error.name === "CastError" && error.message.includes("ObjectId")) {
     return response.status(400).send({ error: "malformatted id" });
   } else if (error.name === "ValidationError") {
-    return response.status(400).json({ error: error.message });
+    if (error.errors.name) {
+      return response.status(400).json({ error: error.errors.name.message });
+    } else if (error.errors.number) {
+      return response.status(400).json({ error: error.errors.number.message });
+    }
   }
 
   next(error);
