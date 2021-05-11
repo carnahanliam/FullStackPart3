@@ -35,7 +35,8 @@ const requestLogger = (request, response, next) => {
 
 app.use(requestLogger);
 
-morgan.token("body", (request, response) => {
+// TODO: remove morgan? or the other request logger?
+morgan.token("body", (request) => {
   return Object.keys(request.body).length !== 0
     ? JSON.stringify(request.body)
     : " ";
@@ -92,7 +93,7 @@ app.get("/api/persons/:id", (request, response, next) => {
 
 app.delete("/api/persons/:id", (request, response, next) => {
   Person.findByIdAndRemove(request.params.id)
-    .then((result) => {
+    .then(() => {
       response.status(204).end();
     })
     .catch((error) => next(error));
