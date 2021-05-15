@@ -25,17 +25,6 @@ const errorHandler = (error, request, response, next) => {
   next(error);
 };
 
-const requestLogger = (request, response, next) => {
-  console.log("Method:", request.method);
-  console.log("Path:  ", request.path);
-  console.log("Body:  ", request.body);
-  console.log("---");
-  next();
-};
-
-app.use(requestLogger);
-
-// TODO: remove morgan? or the other request logger?
 morgan.token("body", (request) => {
   return Object.keys(request.body).length !== 0
     ? JSON.stringify(request.body)
