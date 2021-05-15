@@ -13,16 +13,8 @@
     "logs:prod": "heroku logs --tail",
     "lint": "eslint ."
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/carnahanliam/FullStackPart3.git"
-  },
   "author": "Liam Carnahan",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/carnahanliam/FullStackPart3/issues"
-  },
-  "homepage": "https://github.com/carnahanliam/FullStackPart3#readme",
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
